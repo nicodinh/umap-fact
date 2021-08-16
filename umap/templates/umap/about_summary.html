@@ -1,5 +1,6 @@
 {% load i18n %}
 <div class="wrapper about_summary  highlights">
+  {% comment %}
   <div class="row">
     <div class="col quarter mwide">
       <img class="colophon" src="{{ STATIC_URL }}umap/img/osm.svg" />
@@ -24,17 +25,22 @@
       </p>
     </div>
   </div>
+  {% endcomment %}
 </div>
 <div class="wrapper">
   <div class="row">
     <div class="col half center mwide">
     {% spaceless %}
+    {% if user.is_authenticated %}
     <div class="button-bar {% if demo_map %}half{% endif %}">
       <a href="{% url 'map_new' %}" class="button half">{% trans "Create a map" %}</a>
+      {% comment %}
       {% if demo_map %}
         <a href="{{ demo_map.get_absolute_url }}" class="button half neutral">{% trans "Play with the demo" %}</a>
       {% endif %}
+      {% endcomment %}
     </div>
+    {% endif %}
     {% endspaceless %}
     </div>
   </div>
