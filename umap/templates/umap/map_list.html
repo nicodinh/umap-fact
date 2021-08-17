@@ -1,5 +1,6 @@
 {% load umap_tags umap_tags i18n %}
 
+{% if user.is_authenticated %}
 {% for map_inst in maps %}
 <hr />
 <div class="col wide">
@@ -10,3 +11,5 @@
 {% if maps.has_next %}
 <div class="col wide"><a href="?{% paginate_querystring maps.next_page_number %}" class="button more_button neutral">{% trans "More" %}</a></div>
 {% endif %}
+{% endif %}
+
